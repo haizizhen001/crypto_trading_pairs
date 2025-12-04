@@ -131,7 +131,6 @@ public class PriceAggregationService {
         cryptoPrice.setSymbol(symbol);
         cryptoPrice.setBidPrice(bidPrice);
         cryptoPrice.setAskPrice(askPrice);
-        cryptoPrice.setSource("BEST (Bid:" + bidSource + ", Ask:" + askSource + ")");
         cryptoPrice.setTimestamp(LocalDateTime.now());
 
         cryptoPriceRepository.save(cryptoPrice);
