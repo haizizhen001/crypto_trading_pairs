@@ -25,6 +25,7 @@ public class DataInitializer implements CommandLineRunner {
         log.info("Initializing default user and wallet...");
 
         User user = new User();
+        user.setId("1fe49452-e932-4f69-9161-d3900ec8cded");
         user.setUsername("default_user");
         user.setCreatedAt(LocalDateTime.now());
         user = userRepository.save(user);

@@ -23,7 +23,7 @@ mvn spring-boot:run
 ## Initial Setup
 
 On startup, the application automatically creates:
-- A default user with username "default_user" (ID: auto generated uuid)
+- A default user with username "default_user" (ID: 1fe49452-e932-4f69-9161-d3900ec8cded)
 - Initial USDT wallet balance: 50,000 USDT
 
 ## Testing the Application
@@ -38,18 +38,18 @@ curl http://localhost:8080/api/prices/BTCUSDT
 ### Test Scenario 2: Buy Crypto
 ```bash
 # Check initial wallet balance
-curl http://localhost:8080/api/wallets/user/${userId}
+curl http://localhost:8080/api/wallets/user/1fe49452-e932-4f69-9161-d3900ec8cded
 
 # Buy 0.1 ETH
 curl -X POST http://localhost:8080/api/trades \
   -H "Content-Type: application/json" \
-  -d '{"userId": 1, "symbol": "ETHUSDT", "type": "BUY", "quantity": 0.1}'
+  -d '{"userId": "1fe49452-e932-4f69-9161-d3900ec8cded", "symbol": "ETHUSDT", "type": "BUY", "quantity": 0.1}'
 
 # Check updated wallet balance
-curl http://localhost:8080/api/wallets/user/${userId}
+curl http://localhost:8080/api/wallets/user/1fe49452-e932-4f69-9161-d3900ec8cded
 
 # Check transaction history
-curl http://localhost:8080/api/transactions/user/${userId}
+curl http://localhost:8080/api/transactions/user/1fe49452-e932-4f69-9161-d3900ec8cded
 ```
 
 ### Test Scenario 3: Sell Crypto
@@ -57,10 +57,10 @@ curl http://localhost:8080/api/transactions/user/${userId}
 # Sell 0.05 ETH
 curl -X POST http://localhost:8080/api/trades \
   -H "Content-Type: application/json" \
-  -d '{"userId": 1, "symbol": "ETHUSDT", "type": "SELL", "quantity": 0.05}'
+  -d '{"userId": "1fe49452-e932-4f69-9161-d3900ec8cded", "symbol": "ETHUSDT", "type": "SELL", "quantity": 0.05}'
 
 # Check updated balances
-curl http://localhost:8080/api/wallets/user/${userId}
+curl http://localhost:8080/api/wallets/user/1fe49452-e932-4f69-9161-d3900ec8cded
 ```
 ## H2 Console
 
