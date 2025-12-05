@@ -83,13 +83,12 @@ public class PriceAggregationService {
 
     private PriceData fetchBinancePrice(String symbol) {
         try {
-            BinanceTickerResponse[] tickers = restTemplate.getForObject(
+            BinanceTickerResponse ticker = restTemplate.getForObject(
                 BINANCE_API_URL + "?symbol=" + symbol,
-                BinanceTickerResponse[].class
+                BinanceTickerResponse.class
             );
 
-            if (tickers != null && tickers.length > 0) {
-                BinanceTickerResponse ticker = tickers[0];
+            if (ticker != null && ticker.getBidPrice() != null && ticker.getAskPrice() != null) {
                 return new PriceData(
                     new BigDecimal(ticker.getBidPrice()),
                     new BigDecimal(ticker.getAskPrice())
